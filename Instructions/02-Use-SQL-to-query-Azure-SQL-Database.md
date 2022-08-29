@@ -1,16 +1,11 @@
 ---
 lab:
-  title: Задание 02. Использование SQL для запроса к Базе данных SQL Azure
+  title: "Задание\_02. Использование SQL для запроса к Базе данных SQL Azure"
   module: 'Module 02: Explore relational data in Azure'
-ms.openlocfilehash: c921e1778234f745e89a532ac0534816ed3ffa4b
-ms.sourcegitcommit: e739004291428ce83f14b9d49f1e9dfaa3762dde
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2022
-ms.locfileid: "138052455"
 ---
+
 ## <a name="instructions"></a>Инструкции
-Компания Contoso выполнила подготовку Базы данных SQL и импортировала все данные инвентаризации в хранилище данных. Как ведущему разработчику, вам было предложено выполнить некоторые запросы к данным.
+Contoso has provisioned the SQL database and has imported all the inventory data into the data store. As lead developer, you've been asked to run some queries over the data.
 
 В рамках этой лабораторной работы вам предстоит выполнять запросы к базе данных, чтобы выяснить, сколько продуктов находится в базе данных и сколько единиц товара есть в наличии для конкретного продукта.
 
