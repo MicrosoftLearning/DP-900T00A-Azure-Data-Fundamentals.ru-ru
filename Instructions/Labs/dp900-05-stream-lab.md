@@ -1,28 +1,103 @@
 ---
 lab:
   title: Обзор Azure Stream Analytics
-  module: Explore data analytics in Azure
+  module: Explore fundamentals of real-time analytics
 ---
 
-## <a name="explore-azure-stream-analytics"></a>Обзор Azure Stream Analytics
+# <a name="explore-azure-stream-analytics"></a>Обзор Azure Stream Analytics
 
 В этом упражнении вы подготовите к работе задание Azure Stream Analytics в подписке Azure и используете его для обработки потока данных в реальном времени.
 
-> <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The exercise is part of a module on Microsoft Learn, and includes an option to use a <bpt id="p2">*</bpt>sandbox<ept id="p2">*</ept> Azure subscription. However, if you are completing this exercise as part of an instructor-led class, you should use the Azure subscription provided as part of the class instead of the sandbox.
+Выполнение этого задания займет около **15** минут.
 
-Прежде чем приступить к выполнению упражнения в Microsoft Learn, необходимо подготовить среду Cloud Shell для подписки Azure.
+## <a name="before-you-start"></a>Перед началом работы
 
-1. Войдите в свою подписку Azure на [портале Azure](https://portal.azure.com) по адресу `https://portal.azure.com`, используя учетные данные подписки Azure.
-2. Use the <bpt id="p1">**</bpt>[<ph id="ph1">\&gt;</ph>_]<ept id="p1">**</ept> button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a <bpt id="p2">***</bpt>Bash<ept id="p2">***</ept> environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+Вам потребуется [подписка Azure](https://azure.microsoft.com/free) с доступом уровня администратора.
+
+## <a name="create-azure-resources"></a>Создание ресурсов Azure
+
+1. Войдите в свою подписку на [портале Azure](https://portal.azure.com), используя ее учетные данные.
+
+1. Use the <bpt id="p1">**</bpt>[<ph id="ph1">\&gt;</ph>_]<ept id="p1">**</ept> button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a <bpt id="p2">***</bpt>Bash<ept id="p2">***</ept> environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Портал Azure с областью Cloud Shell](./images/cloud-shell.png)
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the <bpt id="p1">**</bpt>&amp;#8212;<ept id="p1">**</ept>, <bpt id="p2">**</bpt>&amp;#9723;<ept id="p2">**</ept>, and <bpt id="p3">**</bpt>X<ept id="p3">**</ept> icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the <bpt id="p1">[</bpt>Azure Cloud Shell documentation<ept id="p1">](https://docs.microsoft.com/azure/cloud-shell/overview)</ept>.
+1. В Azure Cloud Shell введите указанную ниже команду, чтобы скачать необходимые для этого упражнения файлы.
 
-4. Теперь вы готовы выполнить упражнение в Microsoft Learn. Просто используйте Cloud Shell на портале Azure вместо (пустого) в модуле Learn (предоставляется учащимся, которые проходят обучение в произвольном темпе и используют подписку песочницы).
+    ```bash
+    git clone https://github.com/MicrosoftLearning/DP-900T00A-Azure-Data-Fundamentals dp-900
+    ```
 
-    Используйте приведенную ниже ссылку, чтобы открыть упражнение в Microsoft Learn.
+1. Дождитесь завершения команды, а затем введите следующую команду, чтобы изменить текущий каталог на папку, содержащую файлы для этого упражнения.
 
-    **[Перейти на Microsoft Learn](https://docs.microsoft.com/learn/modules/explore-fundamentals-stream-processing/5-exercise-stream-analytics#create-azure-resources)**
+    ```bash
+    cd dp-900/streaming
+    ```
 
-> **Дополнительные материалы**: Если позже у вас появится время, вы можете вернуться к этому модулю Microsoft Learn и попробовать выполнить другие упражнения, которые он содержит, в том числе изучение потоковой передачи Spark и Azure Synapse Data Explorer.
+1. Введите приведенную ниже команду, чтобы запустить сценарий, создающий ресурсы Azure, которые нужны для этого упражнения.
+
+    ```bash
+    bash setup.sh
+    ```
+
+    Подождите, пока сценарий запустится и выполнит следующие действия:
+
+    1. Установит расширения Azure CLI, необходимые для создания ресурсов (*вы можете игнорировать любые предупреждения об экспериментальных расширениях*).
+    1. Определит группу ресурсов Azure для этого упражнения.
+    1. Создаст ресурс *Центра Интернета вещей Azure*, который будет использоваться для получения потока данных с имитированного устройства.
+    1. Создаст *учетную запись хранения Azure*, в которой будут храниться обработанные данные.
+    1. Создаст задание *Azure Stream Analytics*, которое будет обрабатывать входящие данные устройства в режиме реального времени и записывать результаты в учетную запись хранения.
+
+## <a name="explore-the-azure-resources"></a>Обзор ресурсов Azure
+
+1. In the <bpt id="p1">[</bpt>Azure portal<ept id="p1">](https://portal.azure.com?azure-portal=true)</ept>, on the home page, select <bpt id="p2">**</bpt>Resource groups<ept id="p2">**</ept> to see the resource groups in your subscription. This should include the <bpt id="p1">**</bpt>learn*xxxxxxxxxxxxxxxxx...<ept id="p1">**</ept>* resource group identified by the setup script.
+2. Выберите группу ресурсов **learn*xxxxxxxxxxxxxxxxx…** * и просмотрите содержащиеся в ней ресурсы, которые должны включать:
+    - *Центр Интернета вещей* с именем **iothub*xxxxxxxxxxxxx***, который используется для получения входящих данных с устройств.
+    - *Учетная запись хранения* с именем **store*xxxxxxxxxxxx***, в которую будут записываться результаты обработки данных.
+    - *Задание Stream Analytics* с именем **stream*xxxxxxxxxxxx***, которое будет использоваться для обработки данных потоковой передачи.
+
+    Если все три ресурса отсутствуют в списке, нажмите кнопку **&#8635; Обновить**, чтобы они появились.
+
+    > **Примечание**. При использовании песочницы для обучения группа ресурсов может также содержать вторую *учетную запись хранения* с именем **cloudshell*xxxxxxxx***, где хранятся данные для службы Azure Cloud Shell, которую вы использовали для запуска сценария установки.
+
+3. Выберите задание Stream Analytics **stream*xxxxxxxxxxxx*** и просмотрите информацию на странице **Обзор**, обратив внимание на следующие сведения:
+    - The job has one <bpt id="p1">*</bpt>input<ept id="p1">*</ept> named <bpt id="p2">**</bpt>iotinput<ept id="p2">**</ept>, and one <bpt id="p3">*</bpt>output<ept id="p3">*</ept> named <bpt id="p4">**</bpt>bloboutput<ept id="p4">**</ept>. These reference the IoT Hub and Storage account created by the setup script.
+    - В задании содержится *запрос*, который считывает данные из ввода **iotinput** и объединяет их, подсчитывая количество сообщений, обрабатываемых каждые 10 секунд. Кроме того, он выполняет запись результатов в вывод **blobooutput**.
+
+## <a name="use-the-resources-to-analyze-streaming-data"></a>Использование ресурсов для анализа потоковых данных
+
+1. В верхней части страницы **Обзор** задания Stream Analytics нажмите кнопку **&#9655; Запустить**, а затем на панели **Запуск задания** выберите **Запустить**, чтобы запустить задание.
+2. Дождитесь уведомления об успешном запуске задания потоковой передачи.
+3. Вернитесь в Azure Cloud Shell и введите указанную ниже команду, чтобы имитировать устройство, которое отправляет данные в Центр Интернета вещей.
+
+    ```
+    bash iotdevice.sh
+    ```
+
+4. Подождите, пока начнется имитация, о чем будет свидетельствовать следующий вывод:
+
+    ```
+    Device simulation in progress: 6%|#    | 7/120 [00:08<02:21, 1.26s/it]
+    ```
+
+5. Во время имитации вернитесь на страницу группы ресурсов **learn*xxxxxxxxxxxxxxxxx…** * на портале Azure и выберите учетную запись хранения **store*xxxxxxxxxxxx***.
+6. На панели слева от колонки учетной записи хранения выберите вкладку **Контейнеры**.
+7. Откройте контейнер **data**.
+8. В контейнере **data** перейдите по иерархии папок, которая включает папку для текущего года с вложенными папками для месяца, дня и часа.
+9. В папке часа выберите созданный файл с именем, аналогичным **0_xxxxxxxxxxxxxxxx.json**.
+10. На странице файла выберите **Изменить** и просмотрите содержимое файла, который должен содержать запись JSON для каждого 10-секундного периода, отображающую количество сообщений, полученных от устройств IoT, например:
+
+    ```
+    {"starttime":"2021-10-23T01:02:13.2221657Z","endtime":"2021-10-23T01:02:23.2221657Z","device":"iotdevice","messages":2}
+    {"starttime":"2021-10-23T01:02:14.5366678Z","endtime":"2021-10-23T01:02:24.5366678Z","device":"iotdevice","messages":3}
+    {"starttime":"2021-10-23T01:02:15.7413754Z","endtime":"2021-10-23T01:02:25.7413754Z","device":"iotdevice","messages":4}
+    ...
+    ```
+
+11. Нажмите кнопку **&#8635; Обновить**, чтобы обновить файл, учитывая, что дополнительные результаты записываются в файл, поскольку задание Stream Analytics обрабатывает данные устройства в режиме реального времени по мере их потоковой передачи с устройства в Центр Интернета вещей.
+12. Вернитесь в Azure Cloud Shell и дождитесь завершения имитации устройства (она должно длиться около 3 минут).
+13. Вернувшись на портал Azure, еще раз обновите файл, чтобы просмотреть полный набор результатов, полученных во время имитации.
+14. Вернитесь в группу ресурсов **learn*xxxxxxxxxxxxxxxxx…** * и вновь откройте задание Stream Analytics **stream*xxxxxxxxxxxxx***.
+15. В верхней части страницы задания Stream Analytics нажмите кнопку **&#11036; Остановить**, чтобы остановить задание, подтвердив действие при появлении запроса.
+
+> **Совет**. Когда вы завершите знакомство с решением потоковой передачи, созданную в этом упражнении группу ресурсов можно удалить.
