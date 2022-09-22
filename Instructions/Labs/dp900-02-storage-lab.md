@@ -21,8 +21,8 @@ lab:
 1. Если вы еще этого не сделали, войдите на [портал Azure](https://portal.azure.com?azure-portal=true).
 1. On the Azure portal home page, select <bpt id="p1">**</bpt>&amp;#65291; Create a resource<ept id="p1">**</ept> from the upper left-hand corner and search for <bpt id="p2">*</bpt>Storage account<ept id="p2">*</ept>. Then in the resulting <bpt id="p1">**</bpt>Storage account<ept id="p1">**</ept> page, select <bpt id="p2">**</bpt>Create<ept id="p2">**</ept>.
 1. В мастере **Создание учетной записи хранения** введите приведенные ниже значения:
-    - **Подписка**: Выберите подписку Azure.
-    - **Группа ресурсов**: создайте группу ресурсов с именем по своему выбору.
+    - <bpt id="p1">**</bpt>Subscription<ept id="p1">**</ept>: If you're using a sandbox, select <bpt id="p2">*</bpt>Concierge Subscription<ept id="p2">*</ept>. Otherwise, select your Azure subscription.
+    - **Группа ресурсов**: если вы используете песочницу, выберите существующую группу ресурсов (с именем вида *learn-xxxx…* ). В противном случае создайте новую группу с именем по вашему выбору.
     - **Служба хранилища имя учетной записи**: введите уникальное имя для учетной записи хранения, используя буквы и цифры в нижнем регистре.
     - **Регион**: выберите любое доступное расположение.
     - **Производительность**: *стандартная*
@@ -68,11 +68,11 @@ Azure Data Lake Store Gen2 support enables you to use hierarchical folders to or
 
 1. Скачайте JSON-файл [product2.json](https://aka.ms/product2.json?azure-portal=true) из `https://aka.ms/product2.json` и сохраните его на компьютере в той же папке, в которой ранее загружалось приложение **product1.json**. Вы сможете отправить его в хранилище BLOB-объектов позже.
 1. С левой стороны страницы портала Azure для учетной записи хранения прокрутите экран вниз до раздела **Параметры** и выберите **Обновление Data Lake 2-го поколения**.
-1. In the ****Data Lake Gen2 upgrade**** page, expand and complete each step to upgrade your storage account to enable hierarchical namespace and support Azure Data Lake Storage Gen 2. This may take some time.
+1. На главной странице портала Azure нажмите **&#65291; Создать ресурс** в верхнем левом углу и найдите *Учетную запись хранения*.
 1. После завершения обновления в верхней части области слева выберите **Обозреватель хранилища** и вернитесь к корню контейнера BLOB-объектов **data**, который по-прежнему содержит папку **product_data**.
 1. Выберите папку **product_data** и убедитесь, что она все еще содержит файл **product1.json**, который вы ранее перегрузили.
 1. Нажмите кнопку **&#10514; Отправить**, чтобы открыть панель **Отправить BLOB-объект**.
-1. На главной странице портала Azure нажмите **&#65291; Создать ресурс** в верхнем левом углу и найдите *Учетную запись хранения*.
+1. Затем на полученной странице **Службы хранилища учетной записи** выберите **Создать**.
 1. Закройте панель **Загрузка BLOB-объектов**, если она еще открыта, и убедитесь, что в папке **product_data** теперь есть файл **product2.json**.
 1. В левой части в разделе **Хранилище данных** выберите **Контейнеры**.
 1. Откройте контейнер **data** и убедитесь, что в списке указана созданная папка **product_data**.
@@ -86,7 +86,7 @@ Azure Data Lake Store Gen2 support enables you to use hierarchical folders to or
 1. На странице контейнера хранилища на портале Azure слева в разделе **Хранилище данных** выберите **Контейнеры**.
 1. На странице "Общие папки" выберите **&#65291; Общая папка** и добавьте новый файловый ресурс с именем **files** и уровнем **оптимизации для транзакций**.
 1. В **общих файловых ресурсах** откройте **общую папку**.
-1. Затем на полученной странице **Службы хранилища учетной записи** выберите **Создать**.
+1. At the top of the page, select <bpt id="p1">**</bpt>Connect<ept id="p1">**</ept>. Then in the <bpt id="p1">**</bpt>Connect<ept id="p1">**</ept> pane, note that there are tabs for common operating systems (Windows, Linux, and macOS) that contain scripts you can run to connect to the shared folder from a client computer.
 1. Закройте панель **Подключение**, а затем закройте страницу **files**, чтобы вернуться на страницу **Общих файловых ресурсов** для вашей учетной записи хранения Azure.
 
 ## <a name="explore-azure-tables"></a>Знакомство с Таблицами Azure
@@ -106,7 +106,7 @@ Azure Data Lake Store Gen2 support enables you to use hierarchical folders to or
 
     |Имя свойства | Тип | Значение |
     | ------------ | ---- | ----- |
-    | Имя | Строка | Мини-приложение |
+    | Название | Строка | Мини-приложение |
 
 1. Добавьте второе свойство со следующими значениями:
 
