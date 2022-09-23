@@ -1,0 +1,78 @@
+---
+lab:
+  title: "Изучение потоковой передачи Spark в Azure Synapse\_Analytics"
+  module: Explore fundamentals of real-time analytics
+---
+
+# <a name="explore-spark-streaming-in-azure-synapse-analytics"></a>Изучение потоковой передачи Spark в Azure Synapse Analytics
+
+Выполняя это упражнение, вы будете использовать *Spark Structured Streaming* и *дельта-таблицы* в Azure Synapse Analytics для обработки потоковых данных.
+
+Выполнение этого задания займет около **15** минут.
+
+## <a name="before-you-start"></a>Перед началом работы
+
+Вам потребуется [подписка Azure](https://azure.microsoft.com/free) с доступом уровня администратора.
+
+## <a name="provision-a-synapse-analytics-workspace"></a>Создание рабочей области Synapse Analytics
+
+Чтобы использовать Synapse Analytics, необходимо подготовить ресурс рабочей области Synapse Analytics в подписке Azure.
+
+1. Войдите на портал Azure по адресу [портал Azure](https://portal.azure.com?azure-portal=true), используя учетные данные, связанные с вашей подпиской Azure.
+
+    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Ensure you are working in the directory containing your own subscription - indicated at the top right under your user ID. If not, select the user icon and switch directory.
+
+2. На портале Azure на **домашней** странице используйте значок **&#65291; Создать ресурс**, чтобы создать новый ресурс.
+3. Выполните поиск по запросу *Azure Synapse Analytics* и создайте хранилище **Azure Synapse Analytics** с приведенными ниже параметрами.
+    - **Подписка**. *Ваша подписка Azure*
+        - **Группа ресурсов** — *создайте новую группу ресурсов с подходящим именем, например "synapse-rg".*
+        - **Управляемая группа ресурсов** — *введите подходящее имя, например "synapse-managed-rg".*
+    - **Имя рабочей области** — *введите уникальное имя рабочей области, например "synapse-ws-<vashe_imya>".*
+    - **Регион** — *выберите любой доступный регион.*
+    - **Выбор Data Lake Storage 2-го поколения** — из подписки.
+        - **Имя учетной записи** — *создайте новую учетную запись с уникальным именем, например "datalake<vashe_imya>".*
+        - **Имя файловой системы** — *создайте новую файловую систему с уникальным именем, например "fs<vashe_imya>".*
+
+    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: A Synapse Analytics workspace requires two resource groups in your Azure subscription; one for resources you explicitly create, and another for managed resources used by the service. It also requires a Data Lake storage account in which to store data, scripts, and other artifacts.
+
+4. После ввода этих сведений выберите **Просмотр и создание**, а затем выберите **Создать**, чтобы создать рабочую область.
+5. Дождитесь создания рабочей области. Это займет около пяти минут.
+6. После завершения развертывания перейдите к созданной группе ресурсов и обратите внимание, что она содержит рабочую область Synapse Analytics и учетную запись хранения Data Lake.
+7. Выберите рабочую область Synapse и на странице **Обзор** в карточке **Открыть Synapse Studio** выберите **Открыть**, чтобы открыть Synapse Studio на новой вкладке браузера. Synapse Studio — это веб-интерфейс, с помощью которого можно использовать рабочую область Synapse Analytics.
+8. В левой части Synapse Studio щелкните значок **&rsaquo;&rsaquo;**, чтобы развернуть меню. В нем содержатся различные страницы Synapse Studio, которые вы будете использовать для управления ресурсами и выполнения задач аналитики данных, как показано ниже:
+
+    ![Synapse Studio](images/synapse-studio.png)
+
+## <a name="create-a-spark-pool"></a>Создание пула Spark
+
+Чтобы использовать Spark для обработки потоковых данных, необходимо добавить пул Spark в рабочую область Azure Synapse.
+
+1. В Synapse Studio выберите страницу **Управление**.
+2. Перейдите на вкладку **Пулы Apache Spark**, а затем используйте значок **&#65291; Создать**, чтобы создать новый пул Spark со следующими параметрами:
+    - **Имя пула Apache Spark**: sparkpool
+    - **Семейство размеров узла** — оптимизированные для операций в памяти.
+    - **Размер узла** — малый (4 виртуальных ядра, 32 ГБ).
+    - **Автомасштабирование** — включено.
+    - **Количество узлов** — 3----3.
+3. Просмотрите и создайте пул Spark, а затем дождитесь его развертывания (это может занять несколько минут).
+
+## <a name="explore-stream-processing"></a>Обзор потоковой обработки
+
+Для изучения потоковой обработки, выполняемой с помощью Spark, вы будете использовать записную книжку, содержащую код Python и примечания, которые помогут вам выполнить базовую потоковую обработку с помощью Spark Structured Streaming и дельта-таблиц.
+
+1. Скачайте записную книжку [Structured Streaming and Delta Tables.ipynb](https://github.com/MicrosoftLearning/DP-900T00A-Azure-Data-Fundamentals/raw/master/streaming/Spark%20Structured%20Streaming%20and%20Delta%20Tables.ipynb) на локальный компьютер (если записная книжка открыта в виде текстового файла в браузере, сохраните ее в локальной папке; обязательно сохраните ее как **Structured Streaming and Delta Tables.ipynb**, а не в виде файла .txt)
+2. В Synapse Studio выберите страницу **Разработка**.
+3. В меню **&#65291;** щелкните **&#8612; Импортировать** и выберите файл **Structured Streaming and Delta Tables.ipynb** на локальном компьютере.
+4. Выполните указанные в блокноте инструкции, чтобы подключить его к пулу Spark и запустить содержащиеся в нем ячейки кода для изучения различных способов использования Spark для потоковой обработки.
+
+## <a name="delete-azure-resources"></a>Удаление ресурсов Azure
+
+> <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If you intend to complete other exercises that use Azure Synapse Analytics, you can skip this section. Otherwise, follow the steps below to avoid unnecessary Azure costs.
+
+1. Закройте вкладку браузера Synapse Studio, не сохраняя изменений, и вернитесь на портал Azure.
+1. На **домашней** странице портала Azure выберите **Группы ресурсов**.
+1. Выберите группу ресурсов для рабочей области Synapse Analytics (не управляемую группу ресурсов) и убедитесь, что в ней есть рабочая область Synapse, учетная запись хранения и пул Data Explorer для вашей рабочей области (если вы выполнили предыдущее упражнение, она также будет содержать пул Spark).
+1. В верхней части страницы **Обзор** группы ресурсов выберите **Удалить группу ресурсов**.
+1. Введите имя группы ресурсов, чтобы подтвердить ее удаление, и выберите **Удалить**.
+
+    Через несколько минут рабочая область Azure Synapse и связанная с ней управляемая рабочая область будут удалены.
