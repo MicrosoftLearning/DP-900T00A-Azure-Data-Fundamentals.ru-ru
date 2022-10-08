@@ -19,11 +19,11 @@ lab:
 Если Microsoft Power BI Desktop еще не установлен на компьютере на основе Windows, его можно скачать и установить бесплатно.
 
 1. Скачайте установщик Power BI Desktop отсюда: [https://aka.ms/power-bi-desktop](https://aka.ms/power-bi-desktop?azure-portal=true).
-1. When the file has downloaded, open it, and use the setup wizard to install Power BI Desktop on your computer. This insatllation may take a few minutes.
+1. После загрузки файла откройте его и используйте мастер установки, чтобы установить Power BI Desktop на компьютере. Установка может занять несколько минут.
 
 ## <a name="import-data"></a>Импорт данных
 
-1. Open Power BI Desktop. The application interface should look similar to this:
+1. Откройте Power BI Desktop. Интерфейс приложения должен выглядеть следующим образом:
 
     ![Снимок начального экрана Power BI Desktop.](images/power-bi-start.png)
 
@@ -41,7 +41,7 @@ lab:
 
 1. В диалоговом окне "Доступ к веб-содержимому" выберите **Подключить**.
 
-1. Verify that the URL opens a dataset containing customer data, as shown below. Then select <bpt id="p1">**</bpt>Load<ept id="p1">**</ept> to load the data into the data model for your report.
+1. Убедитесь, что по URL-адресу открывается набор данных, содержащий данные клиента, как показано ниже. Затем нажмите кнопку **Загрузить**, чтобы загрузить данные в модель данных для отчета.
 
     ![Снимок экрана с набором клиентских данных в Power BI.](images/customers.png)
 
@@ -67,7 +67,7 @@ lab:
 
 В модель данных загружены три таблицы импортированных данных, которые теперь можно исследовать и уточнять.
 
-1. In Power BI Desktop, on the left-side edge, select the <bpt id="p1">**</bpt>Model<ept id="p1">**</ept> tab, and then arrange the tables in the model so you can see them. You can hide the panes on the right side by using the <bpt id="p1">**</bpt><ph id="ph1">&gt;&gt;</ph><ept id="p1">**</ept> icons:
+1. С правого края Power BI Desktop выберите вкладку **Модель**, а затем расположите таблицы в модели так, чтобы видеть их. Вы можете скрывать панели справа с помощью значков **>>** :
 
     ![Снимок экрана с вкладкой "Модель" в Power BI.](images/model-tab.png)
 
@@ -77,12 +77,12 @@ lab:
 
     Это обеспечит отображение значений дохода как валюты в визуализациях отчета.
 
-1. In the products table, right-click the <bpt id="p1">**</bpt>Category<ept id="p1">**</ept> field (or open its <bpt id="p2">**</bpt><ph id="ph1">&amp;vellip;</ph><ept id="p2">**</ept> menu) and select <bpt id="p3">**</bpt>Create hierarchy<ept id="p3">**</ept>. This step creates a hierarchy named <bpt id="p1">**</bpt>Category Hierarchy<ept id="p1">**</ept>. You may need to expand or scroll in the <bpt id="p1">**</bpt>products<ept id="p1">**</ept> table to see this - you can also see it in the <bpt id="p2">**</bpt>Fields<ept id="p2">**</ept> pane:
+1. В таблице products щелкните правой кнопкой мыши поле **Category** (или откройте его меню **&vellip;** ) и выберите **Создать иерархию**. Это действие создаст иерархию с именем **Category Hierarchy** (Иерархия категорий). Чтобы увидеть ее, может потребоваться развернуть или прокрутить вниз таблицу **products**. Она также отображается в панели **Поля**:
 
     ![Снимок экрана Power BI с добавлением иерархии категорий.](images/category-hierarchy.png)
 
-1. In the products table, right-click the <bpt id="p1">**</bpt>ProductName<ept id="p1">**</ept> field (or open its <bpt id="p2">**</bpt><ph id="ph1">&amp;vellip;</ph><ept id="p2">**</ept> menu) and select <bpt id="p3">**</bpt>Add to hierarchy<ept id="p3">**</ept><ph id="ph2"> &gt; </ph><bpt id="p4">**</bpt>Category Hierarchy<ept id="p4">**</ept>. This adds the <bpt id="p1">**</bpt>ProductName<ept id="p1">**</ept> field to the hierarchy you created previously.
-1. In the <bpt id="p1">**</bpt>Fields<ept id="p1">**</ept> pane, right-click <bpt id="p2">**</bpt>Category Hierarchy<ept id="p2">**</ept> (or open its <bpt id="p3">**</bpt>...<ept id="p3">**</ept> menu) and select <bpt id="p4">**</bpt>Rename<ept id="p4">**</ept>. Then rename the hierarchy to <bpt id="p1">**</bpt>Categorized Product<ept id="p1">**</ept>.
+1. В таблице products щелкните правой кнопкой мыши поле **ProductName** (или откройте его меню **&vellip;** ) и выберите **Добавить в иерархию** > **Category Hierarchy**. В результате в созданную ранее иерархию будет добавлено поле **ProductName**.
+1. В области **Поля** щелкните правой кнопкой мыши элемент **Category Hierarchy** (или откройте его меню **...**) и выберите команду **Переименовать**. Переименуйте иерархию в **Categorized Product** (Классифицируемый продукт).
 
     ![Снимок экрана с переименованием иерархии в Power BI.](images/rename-hierarchy.png)
 
@@ -95,9 +95,9 @@ lab:
 
 ## <a name="create-a-report"></a>Создание отчета
 
-Now you're almost ready to create a report. First you need to check some settings to ensure all visualizations are enabled.
+Теперь все почти готово для создания отчета. Сначала необходимо проверить ряд параметров и убедиться, что включены все визуализации.
 
-1. On the <bpt id="p1">**</bpt>File<ept id="p1">**</ept> menu, select <bpt id="p2">**</bpt>Options and Settings<ept id="p2">**</ept>. Then select <bpt id="p1">**</bpt>Options<ept id="p1">**</ept>, and in the <bpt id="p2">**</bpt>Security<ept id="p2">**</ept> section, ensure that <bpt id="p3">**</bpt>Use Map and Filled Map visuals<ept id="p3">**</ept> is enabled and select <bpt id="p4">**</bpt>OK<ept id="p4">**</ept>.
+1. В меню **Файл** выберите **Параметры и настройки**. Затем выберите **Параметры**, в разделе **Безопасность** убедитесь, что включен параметр **Использование визуальных элементов карты и картограммы** и нажмите кнопку **ОК**.
 
     ![Снимок экрана с заданием свойства "Использование визуальных элементов карты и картограммы" в Power BI.](images/set-options.png)
 
@@ -107,42 +107,42 @@ Now you're almost ready to create a report. First you need to check some setting
 
     ![Снимок экрана с вкладкой отчета в Power BI.](images/report-tab.png)
 
-1. In the ribbon, above the report design surface, select <bpt id="p1">**</bpt>Text Box<ept id="p1">**</ept> and add a text box containing the text <bpt id="p2">**</bpt>Sales Report<ept id="p2">**</ept> to the report. Format the text to make it bold with a font size of 32.
+1. На ленте над областью конструктора отчета выберите **Текстовое поле** и добавьте в отчет текстовое поле, содержащее текст **Sales Report**. Отформатируйте текст, применив полужирный шрифт размером 32.
 
     ![Снимок экрана с добавлением текстового поля в Power BI.](images/text-box.png)
 
-1. После загрузки файла откройте его и используйте мастер установки, чтобы установить Power BI Desktop на компьютере.
+1. Выберите любую пустую область в отчете, чтобы отменить выбор текстового поля. Затем в области **Поля** разверните узел **Products** и выберите поле **Categorized Products**. Это добавит в отчет таблицу.
 
     ![Снимок экрана с добавлением таблицы классифицируемых продуктов в отчет Power BI.](images/categorized-products-table.png)
 
-1. Установка может занять несколько минут.
+1. Выбрав таблицу, в области **Поля** разверните узел **Orders** и выберите **Revenue**. В таблицу будет добавлен столбец Revenue. Может потребоваться увеличить размер таблицы, чтобы увидеть его.
 
-    The revenue is formatted as currency, as you specified in the model. However, you didn't specify the number of decimal places, so the values include fractional amounts. It won't matter for the visualizations you're going to create, but you could go back to the <bpt id="p1">**</bpt>Model<ept id="p1">**</ept> or <bpt id="p2">**</bpt>Data<ept id="p2">**</ept> tab and change the decimal places if you wish.
+    К доходу применяется формат валюты, как указано в модели. Однако число десятичных разрядов не указано, поэтому среди значений есть дробные величины. Это не имеет значения для создаваемых визуализаций, но при желании вы можете вернуться на вкладку **Модель** или **Данные** и изменить число десятичных знаков.
 
     ![Снимок экрана с таблицей классифицируемых продуктов и дохода в отчете.](images/revenue-column.png)
 
-1. With the table still selected, in the <bpt id="p1">**</bpt>Visualizations<ept id="p1">**</ept> pane, select the <bpt id="p2">**</bpt>Stacked column chart<ept id="p2">**</ept> visualization. The table is changed to a column chart showing revenue by category.
+1. Выбрав таблицу, в области **Визуализации**, выберите визуализацию **Гистограмма с накоплением**. Таблица изменяется на гистограмму, на которой показан доход по категориям.
 
     ![Снимок экрана гистограммы с накоплением для классифицируемых продуктов и дохода в отчете.](images/stacked-column-chart.png)
 
-1. Откройте Power BI Desktop.
+1. Над выбранной гистограммой нажмите на значок **&#8595;** , чтобы включить детализацию. Затем на диаграмме выберите второй столбец (*Road Bikes*) для детализации и просмотрите доход для отдельных продуктов в этой категории. Это возможно, поскольку определена иерархия категорий и продуктов.
 
     ![Снимок экрана гистограммы с детализацией для просмотра продуктов в категории.](images/drill-down.png)
 
-1. Интерфейс приложения должен выглядеть следующим образом:
-1. Select a blank area of the report, and then in the <bpt id="p1">**</bpt>Fields<ept id="p1">**</ept> pane, select the <bpt id="p2">**</bpt>Quantity<ept id="p2">**</ept> field in the <bpt id="p3">**</bpt>orders<ept id="p3">**</ept> table and the <bpt id="p4">**</bpt>Category<ept id="p4">**</ept> field in the <bpt id="p5">**</bpt>products<ept id="p5">**</ept> table. This step results in another column chart showing sales quantity by product category.
+1. Используйте значок **&#x2191;** для уменьшения детализации до уровня категории. Затем нажмите на значок **(** &#8595; **)** , чтобы отключить функцию детализации.
+1. Выберите пустую область отчета, а затем в области **Поля** выберите поле **Quantity** в таблице **orders** и поле **Category** в таблице **products**. Это выведет другую гистограмму, показывающую объем продаж по категориям продуктов.
 1. Выбрав новую гистограмму, в области **Визуализации** выберите **Круговая диаграмма**, а затем измените размер диаграммы и поместите ее рядом с диаграммой дохода по категориям.
 
     ![Снимок экрана с круговой диаграммой объема продаж по категориям.](images/category-pie-chart.png)
 
-1. Select a blank area of the report, and then in the <bpt id="p1">**</bpt>Fields<ept id="p1">**</ept> pane, select the <bpt id="p2">**</bpt>City<ept id="p2">**</ept> field in the <bpt id="p3">**</bpt>customers<ept id="p3">**</ept> table and then select the <bpt id="p4">**</bpt>Revenue<ept id="p4">**</ept> field in the <bpt id="p5">**</bpt>orders<ept id="p5">**</ept> table. This results in a map showing sales revenue by city. Rearrange and resize the visualizations as needed:
+1. Выберите пустую область отчета, а затем в области **Поля** выберите поле **City** в таблице **customers** и поле **Revenue** в таблице **orders**. Будет выведена карта с доходом от продаж по городам. Расположите визуализации и измените их размер необходимым образом:
 
     ![Снимок экрана с картой, показывающей доход по городам.](images/revenue-map.png)
 
-1. In the map, note that you can drag, double-click, use a mouse-wheel, or pinch and drag on a touch screen to interact. Then select a specific city, and note that the other visualizations in the report are modified to highlight the data for the selected city.
+1. Обратите внимание, что для взаимодействия на карте можно перетаскивать элементы, дважды щелкать, использовать колесо мыши или сжатие и перетаскивание на сенсорном экране. Затем выберите конкретный город и обратите внимание, что другие визуализации в отчете изменятся, и на них будут выделены данные для выбранного города.
 
     ![Снимок экрана с картой, показывающей доход по городам, и выделенными данными для выбранного города.](images/selected-data.png)
 
-1. On the <bpt id="p1">**</bpt>File<ept id="p1">**</ept> menu, select <bpt id="p2">**</bpt>Save<ept id="p2">**</ept>. Then save the file with an appropriate .pbix file name. You can open the file and explore data modeling and visualization further at your leisure.
+1. В меню **Файл** выберите пункт **Сохранить**. Теперь сохраните файл с соответствующим именем файл PBIX. Вы можете открыть файл и дополнительно изучить моделирование данных и визуализацию.
 
 Если у вас есть подписка на [службу Power BI](https://www.powerbi.com/?azure-portal=true), вы можете войти в свою учетную запись и опубликовать отчет в рабочей области Power BI. 

@@ -18,7 +18,7 @@ lab:
 
 1. Войдите в свою подписку на [портале Azure](https://portal.azure.com), используя ее учетные данные.
 
-1. Use the <bpt id="p1">**</bpt>[<ph id="ph1">\&gt;</ph>_]<ept id="p1">**</ept> button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a <bpt id="p2">***</bpt>Bash<ept id="p2">***</ept> environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Используйте кнопку **[\>_]** справа от панели поиска в верхней части страницы, чтобы создать новый Cloud Shell на портале Azure, создав хранилище при появлении запроса и выбрав среду ***Bash***. Cloud Shell предоставляет интерфейс командной строки в области в нижней части портала Azure, как показано ниже:
 
     ![Портал Azure с областью Cloud Shell](./images/cloud-shell.png)
 
@@ -50,7 +50,7 @@ lab:
 
 ## <a name="explore-the-azure-resources"></a>Обзор ресурсов Azure
 
-1. In the <bpt id="p1">[</bpt>Azure portal<ept id="p1">](https://portal.azure.com?azure-portal=true)</ept>, on the home page, select <bpt id="p2">**</bpt>Resource groups<ept id="p2">**</ept> to see the resource groups in your subscription. This should include the <bpt id="p1">**</bpt>learn*xxxxxxxxxxxxxxxxx...<ept id="p1">**</ept>* resource group identified by the setup script.
+1. На домашней странице [портала Azure](https://portal.azure.com?azure-portal=true) выберите **Группы ресурсов**, чтобы просмотреть группы ресурсов в своей подписке. Они должны включать группу **learn*xxxxxxxxxxxxxxxxx…** *, определяемую сценарием установки.
 2. Выберите группу ресурсов **learn*xxxxxxxxxxxxxxxxx…** * и просмотрите содержащиеся в ней ресурсы, которые должны включать:
     - *Центр Интернета вещей* с именем **iothub*xxxxxxxxxxxxx***, который используется для получения входящих данных с устройств.
     - *Учетная запись хранения* с именем **store*xxxxxxxxxxxx***, в которую будут записываться результаты обработки данных.
@@ -61,7 +61,7 @@ lab:
     > **Примечание**. При использовании песочницы для обучения группа ресурсов может также содержать вторую *учетную запись хранения* с именем **cloudshell*xxxxxxxx***, где хранятся данные для службы Azure Cloud Shell, которую вы использовали для запуска сценария установки.
 
 3. Выберите задание Stream Analytics **stream*xxxxxxxxxxxx*** и просмотрите информацию на странице **Обзор**, обратив внимание на следующие сведения:
-    - The job has one <bpt id="p1">*</bpt>input<ept id="p1">*</ept> named <bpt id="p2">**</bpt>iotinput<ept id="p2">**</ept>, and one <bpt id="p3">*</bpt>output<ept id="p3">*</ept> named <bpt id="p4">**</bpt>bloboutput<ept id="p4">**</ept>. These reference the IoT Hub and Storage account created by the setup script.
+    - Задание имеет один *ввод* с именем **iotinput** и один *вывод* с именем **bloboutput**. Они ссылаются на Центр Интернета вещей и учетную запись хранения, созданные сценарием установки.
     - В задании содержится *запрос*, который считывает данные из ввода **iotinput** и объединяет их, подсчитывая количество сообщений, обрабатываемых каждые 10 секунд. Кроме того, он выполняет запись результатов в вывод **blobooutput**.
 
 ## <a name="use-the-resources-to-analyze-streaming-data"></a>Использование ресурсов для анализа потоковых данных

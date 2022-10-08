@@ -20,7 +20,7 @@ lab:
 
 1. Войдите на портал Azure по адресу [https://portal.azure/com](https://portal.azure.com?azure-portal=true), используя учетные данные, связанные с вашей подпиской Azure.
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Ensure you are working in the directory containing your subscription - indicated at the top right under your user ID. If not, select the user icon and switch directory.
+    >                 **Примечание**. Убедитесь, что работаете в каталоге, содержащем вашу подписку. Он указан в правом верхнем углу под идентификатором пользователя. В противном случае нажмите значок пользователя и переключите каталог.
 
 1. На портале Azure на **домашней** странице используйте значок **&#65291; Создать ресурс**, чтобы создать новый ресурс.
 1. Выполните поиск по запросу *Azure Synapse Analytics* и создайте хранилище **Azure Synapse Analytics** с приведенными ниже параметрами.
@@ -33,7 +33,7 @@ lab:
         - **Имя учетной записи** — *создайте новую учетную запись с уникальным именем, например "datalake<vashe_imya>".*
         - **Имя файловой системы** — *создайте новую файловую систему с уникальным именем, например "fs<vashe_imya>".*
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: A Synapse Analytics workspace requires two resource groups in your Azure subscription; one for resources you explicitly create, and another for managed resources used by the service. It also requires a Data Lake storage account in which to store data, scripts, and other artifacts.
+    >                 **Примечание**. Для рабочей области Synapse Analytics требуются две группы ресурсов в подписке Azure: одна для ресурсов, явно создаваемых вами, а другая — для управляемых ресурсов, используемых службой. Для нее также необходима учетная запись хранения Data Lake, в которой она будет хранить данные, скрипты и другие артефакты.
 
 1. После ввода этих сведений выберите **Просмотр и создание**, а затем выберите **Создать**, чтобы создать рабочую область.
 1. Дождитесь создания рабочей области. Это займет около пяти минут.
@@ -72,7 +72,7 @@ lab:
     - **Формат данных**: CSV
     - **Пропускать первую запись**: выбрано
     - **Сопоставление**: devices_mapping
-1. Ensure the column data types have been correctly identified as <bpt id="p1">*</bpt>Time (datetime)<ept id="p1">*</ept>, <bpt id="p2">*</bpt>Device (string)<ept id="p2">*</ept>, and <bpt id="p3">*</bpt>Value (long)<ept id="p3">*</ept>). Then select <bpt id="p1">**</bpt>Next: Start Ingestion<ept id="p1">**</ept>.
+1. Убедитесь, что типы данных столбца правильно определены как *время (DateTime)*, *устройство (строка)* и *значение (Long)*). Затем нажмите кнопку **Далее: начать прием**.
 1. По завершении приема нажмите кнопку **Закрыть**.
 1. В Azure Data Explorer на вкладке **Запрос** убедитесь, что выбрана база данных **iot-data**, а затем на панели запроса введите следующий запрос.
 
@@ -90,13 +90,13 @@ lab:
 
     Если результаты такие же, вы успешно создали таблицу **Устройства** из данных в файле.
 
-    > <bpt id="p1">**</bpt>Tip<ept id="p1">**</ept>: In this example, you imported a very small amount of batch data from a file, which is fine for the purposes of this exercise. In reality, you can use Data Explorer to analyze much larger volumes of data; and since you enabled stream ingestion, you could also have configured Data Explorer to ingest data into the table from a streaming source such as Azure Event Hubs.
+    >                 **Совет**. В этом примере вы импортировали из файла лишь небольшой объем пакетных данных, что подходит для целей этого упражнения. На практике можно использовать Data Explorer для анализа больших объемов данных, а так как вы включили прием потоковой передачи, можно также настроить Data Explorer для приема данных в таблицу из источника потоковой передачи, такого как Центры событий Azure.
 
 ## <a name="use-kusto-query-language-to-query-the-table-in-synapse-studio"></a>Использование языка запросов Kusto для запроса таблицы в Synapse Studio
 
 1. Закройте в браузере вкладку Azure Data Explorer и вернитесь на вкладку Synapse Studio.
-1. On the <bpt id="p1">**</bpt>Data<ept id="p1">**</ept> page, expand the <bpt id="p2">**</bpt>iot-data<ept id="p2">**</ept> database and its <bpt id="p3">**</bpt>Tables<ept id="p3">**</ept> folder. Then in the <bpt id="p1">**</bpt>...<ept id="p1">**</ept> menu for the <bpt id="p2">**</bpt>devices<ept id="p2">**</ept> table, select <bpt id="p3">**</bpt>New KQL Script<ept id="p3">**</ept><ph id="ph1"> &gt; </ph><bpt id="p4">**</bpt>Take 1000 rows<ept id="p4">**</ept>.
-1. Review the generated query and its results. The query should contain the following code:
+1. На странице **Данные** разверните базу данных **iot-data** и папку **Tables (таблицы)** в ней. Затем в меню **...** для таблицы **Devices (устройства)** выберите **новый KQL-скрипт** > ** Принимать 1000 строк**.
+1. Проверьте созданный запрос и его результаты. Он должен содержать следующий код:
 
     ```kusto
     devices
@@ -112,7 +112,7 @@ lab:
     | where Device == 'Dev1'
     ```
 
-1. Select <bpt id="p1">**</bpt>&amp;#9655; Run<ept id="p1">**</ept> to run the query. Then review the results, which should contain only the rows for the <bpt id="p1">*</bpt>Dev1<ept id="p1">*</ept> device.
+1. Нажмите **&#9655; Запуск**, чтобы выполнить запрос. Затем просмотрите результаты, которые должны содержать только строки для устройства *Dev1*.
 
 1. Измените запрос следующим образом:
 

@@ -20,7 +20,7 @@ lab:
 
 1. Войдите на портал Azure по адресу [https://portal.azure.com](https://portal.azure.com?azure-portal=true), используя учетные данные, связанные с вашей подпиской Azure.
 
-    > <bpt id="p1">**</bpt>Tip<ept id="p1">**</ept>:  Ensure you are working in the directory containing your subscription - indicated at the top right under your user ID. If not, select the user icon and switch directory.
+    >                 **Совет**. Убедитесь, что работаете в каталоге, содержащем вашу подписку. Он указан в правом верхнем углу под идентификатором пользователя. В противном случае нажмите значок пользователя и переключите каталог.
 
 2. На портале Azure на **домашней** странице используйте значок **&#65291; Создать ресурс**, чтобы создать новый ресурс.
 3. Выполните поиск по запросу *Azure Synapse Analytics* и создайте хранилище **Azure Synapse Analytics** с приведенными ниже параметрами.
@@ -43,7 +43,7 @@ lab:
         - **Имя учетной записи** — *создайте новую учетную запись с уникальным именем, например "datalake<vashe_imya>".*
         - **Имя файловой системы** — *создайте новую файловую систему с уникальным именем, например "fs<vashe_imya>".*
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: A Synapse Analytics workspace requires two resource groups in your Azure subscription; one for resources you explicitly create, and another for managed resources used by the service. It also requires a Data Lake storage account in which to store data, scripts, and other artifacts.
+    >                 **Примечание**. Для рабочей области Synapse Analytics требуются две группы ресурсов в подписке Azure: одна для ресурсов, явно создаваемых вами, а другая — для управляемых ресурсов, используемых службой. Для нее также необходима учетная запись хранения Data Lake, в которой она будет хранить данные, скрипты и другие артефакты.
 
 4. После ввода этих сведений выберите **Просмотр и создание**, а затем выберите **Создать**, чтобы создать рабочую область.
 5. Дождитесь создания рабочей области. Это займет около пяти минут.
@@ -57,11 +57,11 @@ lab:
 
 Одной из основных задач, которые можно выполнить с помощью Azure Synapse Analytics, является определение *конвейеров*, которые передают (и при необходимости преобразуют) данные из широкого диапазона источников в рабочую область для анализа.
 
-1. В Synapse Studio на **домашней** странице выберите **Прием**, а затем выберите **Встроенная задача копирования**, чтобы открыть средство **Копирование данных**.
+1. На **домашней** странице Synapse Studio выберите **Прием**, чтобы открыть средство **Копирование данных**.
 2. В средстве "Копирование данных" на шаге **Свойства** убедитесь, что выбран параметр **Встроенная задача копирования** и **Запустить сейчас один раз**, а затем нажмите кнопку **Далее >**.
 3. На шаге **Источник** во вложенном шаге **Набор данных** выберите следующие параметры:
     - **Тип источника**: все
-    - **Подключение**: *создайте новое подключение и в открывшейся области **Связанная служба** на вкладке **Файл** выберите **HTTP**. Затем щелкните "Далее" и создайте подключение к файлу данных со следующими параметрами:*
+    - **Подключение:** *создайте новое подключение и на появившейся панели **Новое подключение** выберите **HTTP** на вкладке **Файл**. Затем нажмите "Продолжить" и создайте подключение к файлу данных со следующими параметрами:*
         - **Имя** — AdventureWorks Products.
         - **Описание** — список продуктов по протоколу HTTP.
         - **Подключить через среду выполнения интеграции** — AutoResolveIntegrationRuntime.
@@ -91,7 +91,7 @@ lab:
     - **Поведение копирования**: нет.
     - **Максимальное число одновременных подключений** — *оставьте пустым.*
     - **Размер блока (МБ)**  — *оставьте пустым.*
-9. On the <bpt id="p1">**</bpt>Target<ept id="p1">**</ept> step, in the <bpt id="p2">**</bpt>Configuration<ept id="p2">**</ept> substep, ensure that the following properties are selected. Then select <bpt id="p1">**</bpt>Next &gt;<ept id="p1">**</ept>:
+9. На шаге **Цель** во вложенном файле **Конфигурация** убедитесь, что выбраны приведенные ниже свойства. Затем выберите **Далее >**:
     - **Формат файла**: DelimitedText
     - **Разделитель столбцов** — запятая (,).
     - **Разделитель строк** — перевод строки (\n).
@@ -108,13 +108,13 @@ lab:
 11. На шаге **Проверка и завершение** на вложенном шаге **Проверка** прочтите сводку и нажмите кнопку **Далее >**.
 12. На шаге **Развертывание** дождитесь развертывания конвейера и нажмите кнопку **Готово**.
 13. Откройте в Synapse Studio страницу **Монитор** и на вкладке **Запуски конвейера** дождитесь завершения конвейера **Копирование продуктов** с состоянием **Выполнено** (чтобы обновить состояние, используйте на странице запусков конвейера кнопку **&#8635; Обновить**).
-14. On the <bpt id="p1">**</bpt>Data<ept id="p1">**</ept> page, select the <bpt id="p2">**</bpt>Linked<ept id="p2">**</ept> tab and expand the <bpt id="p3">**</bpt>Azure Data Lake Storage Gen 2<ept id="p3">**</ept> hierarchy until you see the file storage for your Synapse workspace. Then select the file storage to verify that a file named <bpt id="p1">**</bpt>products.csv<ept id="p1">**</ept> has been copied to this location, as shown here:
+14. На странице **Данные** выберите вкладку **Связанные** и разворачивайте иерархию **Azure Data Lake Storage 2-го поколения** до тех пор, пока не появится хранилище файлов для рабочей области Synapse. Затем выберите хранилище файлов, чтобы убедиться, что файл с именем **products.csv** скопирован в это расположение, как показано ниже:
 
     ![Изображение, показывающее в Synapse Studio развернутую иерархию Azure Data Lake Storage 2-го поколения с хранилищем файлов для рабочей области Synapse](images/synapse-storage.png)
 
 ## <a name="use-a-sql-pool-to-analyze-data"></a>Использование пула SQL для анализа данных
 
-Now that you've ingested some data into your workspace, you can use Synapse Analytics to query and analyze it. One of the most common ways to query data is to use SQL, and in Synapse Analytics you can use a <bpt id="p1">*</bpt>SQL pool<ept id="p1">*</ept> to run SQL code.
+Теперь, когда вы приняли данные в рабочую область, вы можете использовать Synapse Analytics для запросов и анализа. Одним из наиболее распространенных способов для запроса данных является использование SQL. В Synapse Analytics можно использовать *пул SQL* для выполнения кода SQL.
 
 1. В Synapse Studio щелкните правой кнопкой мыши файл **products.csv** в хранилище файлов для рабочей области Synapse, наведите указатель на пункт **Новый скрипт SQL** и выберите **Выбрать первые 100 строк**.
 2. В открывшейся области **Сценарий SQL 1** проверьте созданный код SQL, который должен выглядеть примерно так:
@@ -143,7 +143,7 @@ Now that you've ingested some data into your workspace, you can use Synapse Anal
     | 772 | Mountain-100 Silver, 42 | Горные велосипеды | 3399.9900 |
     | ... | ... | ... | ... |
 
-5. Note the results consist of four columns named C1, C2, C3, and C4; and that the first row in the results contains the names of the data fields. To fix this problem, add a HEADER_ROW = TRUE parameters to the OPENROWSET function as shown here (replacing <bpt id="p1">*</bpt>datalakexx<ept id="p1">*</ept> and <bpt id="p2">*</bpt>fsxx<ept id="p2">*</ept> with the names of your data lake storage account and file system), and then rerun the query:
+5. Обратите внимание, что результаты состоят из четырех столбцов с именами C1, C2, C3 и C4, и что первая строка в результатах содержит имена полей данных. Чтобы устранить эту проблему, добавьте в функцию OPENROWSET параметры HEADER_ROW = TRUE, как показано ниже (замените *datalakexx* и *fsxx* на имена учетной записи хранения озера данных и файловой системы), а затем повторно выполните запрос:
 
     ```SQL
     SELECT
@@ -188,13 +188,13 @@ Now that you've ingested some data into your workspace, you can use Synapse Anal
     | Велосипедные стойки | 1 |
     | ... | ... |
 
-8. In the <bpt id="p1">**</bpt>Properties<ept id="p1">**</ept> pane for <bpt id="p2">**</bpt>SQL Script 1<ept id="p2">**</ept>, change the <bpt id="p3">**</bpt>Name<ept id="p3">**</ept> to <bpt id="p4">**</bpt>Count Products by Category<ept id="p4">**</ept>. Then in the toolbar, select <bpt id="p1">**</bpt>Publish<ept id="p1">**</ept> to save the script.
+8. В области **Свойства** для **Скрипта SQL 1**измените **Имя** на **Подсчет продуктов по категориям**. Затем на панели инструментов выберите **Опубликовать**, чтобы сохранить скрипт.
 
 9. Закройте панель скриптов **Подсчет продуктов по категориям**.
 
 10. В Synapse Studio выберите страницу **Разработка** и обратите внимание, что в ней был сохранен скрипт SQL **Подсчет продуктов по категориям**.
 
-11. Select the <bpt id="p1">**</bpt>Count Products by Category<ept id="p1">**</ept> SQL script to reopen it. Then ensure that the script is connected to the <bpt id="p1">**</bpt>Built-in<ept id="p1">**</ept> SQL pool and run it to retrieve the product counts.
+11. Выберите скрипт SQL **Подсчет продуктов по категориям**, чтобы снова открыть его. Затем убедитесь, что скрипт подключен к **встроенному** пулу SQL и запустите его для получения количества продуктов.
 
 12. В области **Результаты** выберите представление **Диаграмма**, а затем выберите следующие параметры диаграммы:
     - **Тип диаграммы** — гистограмма.
@@ -212,7 +212,7 @@ Now that you've ingested some data into your workspace, you can use Synapse Anal
 
 ## <a name="use-a-spark-pool-to-analyze-data"></a>Использование пула Spark для анализа данных
 
-While SQL is a common language for querying structured datasets, many data analysts find languages like Python useful to explore and prepare data for analysis. In Azure Synapse Analytics, you can run Python (and other) code in a <bpt id="p1">*</bpt>Spark pool<ept id="p1">*</ept>; which uses a distributed data processing engine based on Apache Spark.
+Хотя SQL является стандартным языком для запросов к структурированным наборам данных, многие специалисты по анализу и обработке данных находят такие языки, как Python, полезными для изучения и подготовки данных для анализа. В Azure Synapse Analytics можно выполнять код Python (и другой) в *пуле Spark*. который использует распределенный механизм обработки данных на основе Apache Spark.
 
 1. В Synapse Studio выберите страницу **Управление**.
 2. Перейдите на вкладку **Пулы Apache Spark**, а затем используйте значок **&#65291; Создать**, чтобы создать новый пул Spark со следующими параметрами:
@@ -222,7 +222,7 @@ While SQL is a common language for querying structured datasets, many data analy
     - **Автомасштабирование** — включено.
     - **Количество узлов** — 3----3.
 3. Просмотрите и создайте пул Spark, а затем дождитесь его развертывания (это может занять несколько минут).
-4. When the Spark pool has been deployed, in Synapse Studio, on the <bpt id="p1">**</bpt>Data<ept id="p1">**</ept> page, browse to the file system for your Synapse workspace. Then right-click <bpt id="p1">**</bpt>products.csv<ept id="p1">**</ept>, point to <bpt id="p2">**</bpt>New notebook<ept id="p2">**</ept>, and select <bpt id="p3">**</bpt>Load to DataFrame<ept id="p3">**</ept>.
+4. После развертывания пула Spark в Synapse Studio на странице **Данные** перейдите в файловую систему для рабочей области Synapse. Затем щелкните правой кнопкой мыши **products.csv**, наведите указатель на пункт **Создать записную книжку** и выберите **Загрузка в DataFrame**.
 5. В открывшейся области **Записная книжка 1** в списке **Присоединить** выберите созданный ранее пул Spark под названием **spark** и убедитесь, что для параметра **Язык** задано значение **PySpark (Python)**.
 6. Просмотрите код в первой (и только) ячейке записной книжки, которая должна выглядеть следующим образом:
 
@@ -235,7 +235,7 @@ While SQL is a common language for querying structured datasets, many data analy
     display(df.limit(10))
     ```
 
-7.                  **Совет**. Убедитесь, что работаете в каталоге, содержащем вашу подписку. Он указан в правом верхнем углу под идентификатором пользователя.
+7.  Нажмите **#9655; Запуск** слева от ячейки кода, чтобы запустить ее, и дождитесь результата. При первом запуске ячейки в записной книжке пул Spark запускается, поэтому для возврата результатов может потребоваться около минуты.
 
     > **Примечание**. Если возникает ошибка из-за того, что ядро Python еще недоступно, запустите ячейку еще раз.
 
@@ -285,7 +285,7 @@ While SQL is a common language for querying structured datasets, many data analy
     | Колеса | 14 |
     | ... | ... |
 
-14. В противном случае нажмите значок пользователя и переключите каталог.
+14. В выходных данных результатов для ячейки выберите представление **Диаграмма**. В итоге диаграмма должна выглядеть примерно так:
 
     ![Изображение, показывающее представление диаграммы "Число категорий"](images/bar-chart.png)
 
