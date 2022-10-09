@@ -16,7 +16,7 @@ lab:
 
 ## <a name="provision-an-azure-sql-database-resource"></a>Подготовка ресурса "База данных SQL Azure"
 
-1. In the <bpt id="p1">[</bpt>Azure portal<ept id="p1">](https://portal.azure.com?azure-portal=true)</ept>, select <bpt id="p2">**</bpt>&amp;#65291; Create a resource<ept id="p2">**</ept> from the upper left-hand corner and search for <bpt id="p3">*</bpt>Azure SQL<ept id="p3">*</ept>. Then in the resulting <bpt id="p1">**</bpt>Azure SQL<ept id="p1">**</ept> page, select <bpt id="p2">**</bpt>Create<ept id="p2">**</ept>.
+1. На [портале Azure](https://portal.azure.com?azure-portal=true) в верхнем левом углу нажмите **&#65291; Создать ресурс** и найдите *Azure SQL*. Затем на странице **Azure SQL** выберите **Создать**.
 
 1. Просмотрите доступные параметры Azure SQL, а затем в области **Базы данных SQL** убедитесь, что выбран пункт **Отдельная база данных**, и нажмите **Создать**.
 
@@ -26,12 +26,12 @@ lab:
     - **Подписка**: Выберите подписку Azure.
     - **Группа ресурсов**: создайте новую группу ресурсов с именем по своему выбору.
     - **Имя базы данных**: *AdventureWorks*
-    - <bpt id="p1">**</bpt>Server<ept id="p1">**</ept>:  Select <bpt id="p2">**</bpt>Create new<ept id="p2">**</ept> and create a new server with a unique name in any available location. Use <bpt id="p1">**</bpt>SQL authentication<ept id="p1">**</ept> and specify your name as the server admin login and a suitably complex password (remember the password - you'll need it later!)
+    -                 **Сервер**: выберите **Создать новый** и создайте сервер с уникальным именем в любом доступном расположении. Используйте **проверку подлинности SQL** и укажите имя для входа администратора сервера и достаточно сложный пароль (запомните пароль, он понадобится позже).
     - **Нужно ли использовать эластичный пул SQL?**: *Нет*
     - **Вычисления + хранилище**: оставьте без изменений
     - **Избыточность хранилища резервных копий**: выберите *локально избыточное хранилище резервных копий*.
 
-1. On the <bpt id="p1">**</bpt>Create SQL Database<ept id="p1">**</ept> page, select <bpt id="p2">**</bpt>Next :Networking &gt;<ept id="p2">**</ept>, and on the <bpt id="p3">**</bpt>Networking<ept id="p3">**</ept> page, in the <bpt id="p4">**</bpt>Network connectivity<ept id="p4">**</ept> section, select <bpt id="p5">**</bpt>Public endpoint<ept id="p5">**</ept>. Then select <bpt id="p1">**</bpt>Yes<ept id="p1">**</ept> for both options in the <bpt id="p2">**</bpt>Firewall rules<ept id="p2">**</ept> section to allow access to your database server from Azure services and your current client IP address.
+1. На странице **Создать базу данных SQL** выберите **Далее: Сеть >** и на странице **Сеть** в разделе **Сетевое подключение** выберите **Общедоступная конечная точка**. Затем в разделе **Правила брандмауэра** выберите **Да** для обоих параметров, чтобы разрешить доступ к серверу базы данных из служб Azure и текущего IP-адреса клиента.
 
 1. Нажмите **Далее: Безопасность >** и выберите для параметра **Включить Microsoft Defender для SQL** значение **Не сейчас**.
 
@@ -39,7 +39,7 @@ lab:
 
 1. Щелкните **Просмотр и создание**, а затем нажмите кнопку **Создать**, чтобы создать базу данных SQL Azure.
 
-1. Wait for deployment to complete. Then go to the resource that was deployed, which should look like this:
+1. Дождитесь завершения развертывания. Затем перейдите к развернутому ресурсу, который должен выглядеть следующим образом:
 
     ![Снимок экрана портала Azure со страницей базы данных SQL.](images//sql-database-portal.png)
 
