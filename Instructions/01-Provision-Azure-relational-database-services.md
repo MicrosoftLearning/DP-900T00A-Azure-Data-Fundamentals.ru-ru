@@ -1,12 +1,13 @@
 ---
 lab:
-    title: 'Лабораторная работа 01. Подготовка служб реляционных баз данных Azure'
-    module: 'Модуль 02. Изучение реляционных данных в Azure'
+  title: "Задание\_01: Подготовка служб реляционных баз данных Azure"
+  module: 'Module 02: Explore relational data in Azure'
 ---
 
-## Инструкции
-Как инженер данных в Contoso, вы должны создать и настроить серверы SQL Server, PostgreSQL и MySQL для Azure.
+## <a name="instructions"></a>Инструкции
+
+Как специалист по обработке данных в Contoso, вы должны создать и настроить серверы SQL Server, PostgreSQL и MySQL для Azure.
 
 В рамках этой лабораторной работы вам предстоит создать и настроить один из следующих серверов для Azure: SQL Server, PostgreSQL или MySQL.
 
-1.	Перейдите к упражнению Microsoft Learn по ссылке https://aka.ms/dp900lab01-rus и выполните урок в браузере. 
+1.  Перейдите к упражнению Microsoft Learn по ссылке https://aka.ms/dp900lab01 и выполните урок в браузере. 
