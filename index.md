@@ -4,7 +4,7 @@ permalink: index.html
 layout: home
 ---
 
-# <a name="azure-data-fundamentals-exercises"></a>Основы данных Azure: упражнения
+# Основы данных Azure: упражнения
 
 Эти практические упражнения предназначены для поддержки обучающих материалов в [Microsoft Learn](https://docs.microsoft.com/training/).
 
@@ -13,5 +13,5 @@ layout: home
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Labs'" %}
 | Упражнение |
 | --- |
-{% за активность на лабораторных работах  %}| [{{ activity.lab.title }}{% if activity.lab.type %} - {{ activity.lab.type }}{% endif %}]({{ site.github.url }}{{ activity.url }}) |
+{% for activity in labs  %}| [{{ activity.lab.title }}{% if activity.lab.type %} - {{ activity.lab.type }}{% endif %}]({{ site.github.url }}{{ activity.url }}) |
 {% endfor %}
