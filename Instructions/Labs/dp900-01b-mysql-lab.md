@@ -4,17 +4,17 @@ lab:
   module: Explore relational data in Azure
 ---
 
-# <a name="explore-azure-database-for-mysql"></a>Изучение Базы данных Azure для MySQL
+# Изучение Базы данных Azure для MySQL
 
 В этом упражнении вы подготовите к работе ресурс "База данных Azure для MySQL" в своей подписке Azure.
 
 Выполнение этого задания займет около **5** минут.
 
-## <a name="before-you-start"></a>Перед началом работы
+## Перед началом работы
 
 Вам потребуется [подписка Azure](https://azure.microsoft.com/free) с доступом уровня администратора.
 
-## <a name="provision-an-azure-database-for-mysql-resource"></a>Подготовка к работе ресурса "База данных Azure для MySQL"
+## Подготовка к работе ресурса "База данных Azure для MySQL"
 
 В этом упражнении вы будете подготавливать к работе ресурс "База данных Azure для MySQL".
 
