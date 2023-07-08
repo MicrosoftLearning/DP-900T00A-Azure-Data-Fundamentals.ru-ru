@@ -4,17 +4,17 @@ lab:
   module: Explore relational data in Azure
 ---
 
-# <a name="explore-azure-database-for-postgresql"></a>Изучение Базы данных Azure для PostgreSQL
+# Изучение Базы данных Azure для PostgreSQL
 
 В этом упражнении вы подготовите к работе ресурс "База данных Azure для PostgreSQL" в своей подписке Azure.
 
 Выполнение этого задания займет около **5** минут.
 
-## <a name="before-you-start"></a>Перед началом работы
+## Перед началом работы
 
 Вам потребуется [подписка Azure](https://azure.microsoft.com/free) с доступом уровня администратора.
 
-## <a name="provision-an-azure-database-for-postgresql-resource"></a>Подготовка к работе ресурса "База данных Azure для PostgreSQL"
+## Подготовка к работе ресурса "База данных Azure для PostgreSQL"
 
 В этом упражнении вы будете подготавливать к работе ресурс "База данных Azure для PostgreSQL".
 
