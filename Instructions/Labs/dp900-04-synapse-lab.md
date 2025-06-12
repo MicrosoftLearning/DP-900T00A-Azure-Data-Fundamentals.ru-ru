@@ -23,7 +23,7 @@ lab:
     > **Совет**. Убедитесь, что работаете в каталоге, содержащем вашу подписку. Он указан в правом верхнем углу под идентификатором пользователя. В противном случае нажмите значок пользователя и переключите каталог.
 
 2. На портале Azure на **домашней** странице используйте значок **&#65291; Создать ресурс**, чтобы создать новый ресурс.
-3. Выполните поиск по запросу *Azure Synapse Analytics* и создайте хранилище **Azure Synapse Analytics** с приведенными ниже параметрами.
+3. `Azure Synapse Analytics`Выполните поиск и создайте новый **ресурс Azure Synapse Analytics** со следующими параметрами:
     - **Подписка**: *ваша подписка Azure*
         - **Группа ресурсов** — *создайте новую группу ресурсов с подходящим именем, например "synapse-rg".*
         - **Управляемая группа ресурсов** — *введите подходящее имя, например "synapse-managed-rg".*
@@ -62,8 +62,8 @@ lab:
 3. На шаге **Источник** во вложенном шаге **Набор данных** выберите следующие параметры:
     - **Тип источника**: все
     - **Подключение:***создайте новое подключение и на появившейся панели **Новое подключение** выберите **HTTP** на вкладке **Общий протокол**. Затем нажмите "Продолжить" и создайте подключение к файлу данных со следующими параметрами:*
-        - **Имя** — AdventureWorks Products.
-        - **Описание** — список продуктов по протоколу HTTP.
+        - **Имя**: `AdventureWorks Products`
+        - **Description** (Описание): `Product list via HTTP`
         - **Подключить через среду выполнения интеграции** — AutoResolveIntegrationRuntime.
         - **Базовый URL-адрес** — `https://raw.githubusercontent.com/MicrosoftLearning/DP-900T00A-Azure-Data-Fundamentals/master/Azure-Synapse/products.csv`.
         - **Проверка сертификата сервера** — включите.
@@ -120,15 +120,15 @@ lab:
 2. В открывшейся области **Сценарий SQL 1** проверьте созданный код SQL, который должен выглядеть примерно так:
 
     ```SQL
-    -- This is auto-generated code
-    SELECT
-        TOP 100 *
-    FROM
-        OPENROWSET(
-            BULK 'https://datalakexx.dfs.core.windows.net/fsxx/products.csv',
-            FORMAT = 'CSV',
-            PARSER_VERSION='2.0'
-        ) AS [result]
+   -- This is auto-generated code
+   SELECT
+       TOP 100 *
+   FROM
+       OPENROWSET(
+           BULK 'https://datalakexx.dfs.core.windows.net/fsxx/products.csv',
+           FORMAT = 'CSV',
+           PARSER_VERSION='2.0'
+       ) AS [result]
     ```
 
     Этот код открывает набор строк из импортированного текстового файла и извлекает первые 100 строк данных.
@@ -146,15 +146,15 @@ lab:
 5. Обратите внимание, что результаты состоят из четырех столбцов с именами C1, C2, C3 и C4, и что первая строка в результатах содержит имена полей данных. Чтобы устранить эту проблему, добавьте в функцию OPENROWSET параметры HEADER_ROW = TRUE, как показано ниже (замените *datalakexx* и *fsxx* на имена учетной записи хранения озера данных и файловой системы), а затем повторно выполните запрос:
 
     ```SQL
-    SELECT
-        TOP 100 *
-    FROM
-        OPENROWSET(
-            BULK 'https://datalakexx.dfs.core.windows.net/fsxx/products.csv',
-            FORMAT = 'CSV',
-            PARSER_VERSION='2.0',
-            HEADER_ROW = TRUE
-        ) AS [result]
+   SELECT
+       TOP 100 *
+   FROM
+       OPENROWSET(
+           BULK 'https://datalakexx.dfs.core.windows.net/fsxx/products.csv',
+           FORMAT = 'CSV',
+           PARSER_VERSION='2.0',
+           HEADER_ROW = TRUE
+       ) AS [result]
     ```
 
     Теперь результаты выглядят следующим образом:
@@ -168,16 +168,16 @@ lab:
 6. Измените запрос следующим образом (заменив *datalakexx* и *fsxx* именами учетной записи хранения озера данных и файловой системы):
 
     ```SQL
-    SELECT
-        Category, COUNT(*) AS ProductCount
-    FROM
-        OPENROWSET(
-            BULK 'https://datalakexx.dfs.core.windows.net/fsxx/products.csv',
-            FORMAT = 'CSV',
-            PARSER_VERSION='2.0',
-            HEADER_ROW = TRUE
-        ) AS [result]
-    GROUP BY Category;
+   SELECT
+       Category, COUNT(*) AS ProductCount
+   FROM
+       OPENROWSET(
+           BULK 'https://datalakexx.dfs.core.windows.net/fsxx/products.csv',
+           FORMAT = 'CSV',
+           PARSER_VERSION='2.0',
+           HEADER_ROW = TRUE
+       ) AS [result]
+   GROUP BY Category;
     ```
 
 7. Выполните измененный запрос, который должен возвращать результирующий набор, содержащий количество продуктов в каждой категории, например:
@@ -188,7 +188,7 @@ lab:
     | Багажники для велосипедов | 1 |
     | ... | ... |
 
-8. В области **Свойства** для **Скрипта SQL 1**измените **Имя** на **Подсчет продуктов по категориям**. Затем на панели инструментов выберите **Опубликовать**, чтобы сохранить скрипт.
+8. В области свойств** скрипта **SQL 1** измените ****имя** `Count Products by Category`на . Затем на панели инструментов выберите **Опубликовать**, чтобы сохранить скрипт.
 
 9. Закройте панель скриптов **Подсчет продуктов по категориям**.
 
@@ -227,15 +227,15 @@ lab:
 6. Просмотрите код в первой (и только) ячейке записной книжки, которая должна выглядеть следующим образом:
 
     ```Python
-    %%pyspark
-    df = spark.read.load('abfss://fsxx@datalakexx.dfs.core.windows.net/products.csv', format='csv'
-    ## If header exists uncomment line below
-    ##, header=True
-    )
-    display(df.limit(10))
+   %%pyspark
+   df = spark.read.load('abfss://fsxx@datalakexx.dfs.core.windows.net/products.csv', format='csv'
+   ## If header exists uncomment line below
+   ##, header=True
+   )
+   display(df.limit(10))
     ```
 
-7.  Нажмите **#9655; Запуск** слева от ячейки кода, чтобы запустить ее, и дождитесь результата. При первом запуске ячейки в записной книжке пул Spark запускается, поэтому для возврата результатов может потребоваться около минуты.
+7. Нажмите **#9655; Запуск** слева от ячейки кода, чтобы запустить ее, и дождитесь результата. При первом запуске ячейки в записной книжке пул Spark запускается, поэтому для возврата результатов может потребоваться около минуты.
 
     > **Примечание**. Если возникает ошибка из-за того, что ядро Python еще недоступно, запустите ячейку еще раз.
 
@@ -251,12 +251,12 @@ lab:
 9. Раскомментируйте строку *,header=True* (так как файл products.csv содержит заголовки столбцов в первой строке), чтобы код выглядел следующим образом:
 
     ```Python
-    %%pyspark
-    df = spark.read.load('abfss://fsxx@datalakexx.dfs.core.windows.net/products.csv', format='csv'
-    ## If header exists uncomment line below
-    , header=True
-    )
-    display(df.limit(10))
+   %%pyspark
+   df = spark.read.load('abfss://fsxx@datalakexx.dfs.core.windows.net/products.csv', format='csv'
+   ## If header exists uncomment line below
+   , header=True
+   )
+   display(df.limit(10))
     ```
 
 10. Запустите ячейку повторно и убедитесь, что результаты выглядят следующим образом:
