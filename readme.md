@@ -1,3 +1,4 @@
+**⚠️ This GitHub repo will retire on 28th November 2025.** 
 # Основы работы с данными в Microsoft Azure
 
 Этот репозиторий содержит упражнения для практических занятий по курсу Microsoft [DP-900* Основы данных в Microsoft Azure*](https://docs.microsoft.com/en-us/learn/certifications/courses/dp-900t00) и [модули для обучения в произвольном темпе на платформе Microsoft Learn](https://docs.microsoft.com/en-us/users/23110622/collections/0kjyh8rn5gdrjj/). Практические задания идут вместе с учебными материалами и позволяют применять технологии, которые в них описываются. 
